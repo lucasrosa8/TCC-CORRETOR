@@ -2,20 +2,19 @@ import styled, { css } from "styled-components";
 
 
 export const Main = styled.main`
-  min-height: 100vh;
+  min-height: 77.8vh;
   background-color: #f2f2f2;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 
   font-family: "Archivo", sans-serif;
 `;
 
 export const FirstForm = styled.form`
-  margin: 50px auto;
+  margin: 30px auto;
   padding: 65px;
 
   width: 65%;

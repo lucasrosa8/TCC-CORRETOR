@@ -14,7 +14,7 @@ const ImageUpload = () => {
   };
 
   return (
-    <div style={styles.imagem}>
+    <div>
       <input
         type="file"
         accept="image/*"
