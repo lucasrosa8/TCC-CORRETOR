@@ -21,25 +21,48 @@ export const Header = styled.header`
 export const Navbar = styled.nav`
   ul {
     display: flex;
-    
-    
+    list-style: none;
 
     li {
       padding: 10px 20px;
-      
-
       cursor: pointer;
       transition: 0.4s;
+      
 
       a {
         color: #fff;
         font-size: 16px;
         font-family: "Poppins";
+        text-decoration: none;
+        
       }
 
       &:hover {
         background-color: #c16c21;
       }
+
+      .dropdown-toggle {
+        text-decoration: none;
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-family: "Poppins";
+      }
+
+      .dropdown-menu {
+        background-color: #FFF;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        .dropdown-item {
+          color: #000;
+          transition: 0.4s;
+
+          &:hover {
+            background-color: #999; /* Cor ao passar o mouse sobre o item do dropdown */
+          }
+
     }
   }
 `;
