@@ -41,17 +41,19 @@ export function Header({ hasNavbar }) {
 
 import Link from 'next/link';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { MdMenu } from "react-icons/md";
 import * as S from './styles';
+
 
 export function Header({ hasNavbar }) {
   const links = [
     {
-      text: 'Disciplina',
+      text: <MdMenu size={35} />,
       route: '/disciplina/disciplina',
       dropdownLinks: [
         {
           text: 'Cadastrar disciplinas',
-          route: '/disciplina/cadastrar',
+          route: '/disciplina/disciplina',
         },
         {
           text: 'Consultar disciplinas',
@@ -59,22 +61,23 @@ export function Header({ hasNavbar }) {
         },
         {
           text: 'Gerar gabarito',
-          route: '/disciplina/gerar-gabarito',
+          route: '/gabarito/gabarito',
+        },
+        {
+          text: 'Cadastrar alunos',
+          route: '/formulario/formulario',
         },
         {
           text: 'Consultar alunos',
-          route: '/disciplina/consultar-alunos',
+          route: '/aluno/aluno',
+        },
+        {
+          text: 'Corrigir prova',
+          route: '/prova/prova',
         },
       ],
     },
-    {
-      text: 'Formulario',
-      route: '/formulario/formulario',
-    },
-    {
-      text: 'Provas',
-      route: '/prova/prova',
-    },
+
   ];
 
   return (

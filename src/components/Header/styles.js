@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   background-color: #0b2940;
- 
-
-
+  height: 130px;
  
   h1 {
     color: #EC8A34;
@@ -15,7 +13,6 @@ export const Header = styled.header`
     padding-top:25px;
   }
 
- 
 `;
 
 export const Navbar = styled.nav`
@@ -24,21 +21,18 @@ export const Navbar = styled.nav`
     list-style: none;
 
     li {
-      padding: 10px 20px;
       cursor: pointer;
       transition: 0.4s;
-      
 
       a {
         color: #fff;
         font-size: 16px;
         font-family: "Poppins";
         text-decoration: none;
-        
       }
 
       &:hover {
-        background-color: #c16c21;
+        background-color: #103857;
       }
 
       .dropdown-toggle {
@@ -63,6 +57,8 @@ export const Navbar = styled.nav`
             background-color: #999; /* Cor ao passar o mouse sobre o item do dropdown */
           }
 
+      }
     }
   }
+}
 `;
