@@ -4,7 +4,7 @@ import * as S from "./styles";
 const links = [
   {
     text: "Disciplina ",
-    route: "/formulario/formulario",
+    route: "/disciplina/disciplina",
   },
   {
     text: "Formulario ",
@@ -12,7 +12,7 @@ const links = [
   },
   {
     text: "Provas",
-    route: "/gerar-pdf/provas",
+    route: "/prova/prova",
   },
 
   

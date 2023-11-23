@@ -15,8 +15,8 @@ export const Main = styled.main`
 
 
 export const Submit = styled.button`
-  height: 5vh;
-  width: 65%;
+  height: 6vh;
+  width: 40%;
   margin: 0 auto;
 
   background: #0B2940;

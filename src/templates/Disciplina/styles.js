@@ -107,8 +107,8 @@ export const DateFormRow = styled(FormRow)`
 `;
 
 export const Submit = styled.button`
-  height: 6vh;
-  width: 40%;
+  height: 5vh;
+  width: 65%;
   margin: 20px auto;
 
   background: #0B2940;
