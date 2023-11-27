@@ -2,20 +2,21 @@ import styled, { css } from "styled-components";
 
 
 export const Main = styled.main`
-  min-height: 77.8vh;
+  min-height: 100vh;
   background-color: #f2f2f2;
+  padding-top: 10%;
 
-  display: flex;
+  
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  
   
 
   font-family: "Archivo", sans-serif;
 `;
 
 export const FirstForm = styled.form`
-  margin: 40px auto;
+  margin:  auto;
   padding: 60px;
 
   width: 90%;
@@ -38,9 +39,12 @@ export const FirstForm = styled.form`
 
 
 export const Submit = styled.button`
-  height: 6vh;
+  height: 10%;
   width: 40%;
   margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  
 
   background: #0B2940;
   border: 0;

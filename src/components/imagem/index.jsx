@@ -1,6 +1,6 @@
 // ImageUpload.js
 import { useState } from 'react';
-import styles from './styles'; // Importe os estilos do arquivo separado
+import { ImageContainer, InputField, Button, ImagePreview } from '../imagem/styles';
 
 const ImageUpload = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -15,17 +15,15 @@ const ImageUpload = () => {
 
   return (
     <div>
-      <input
+      <InputField
         type="file"
         accept="image/*"
         onChange={handleImageChange}
-        style={styles.input}
       />
       {selectedImage && (
-        <img
+        <ImagePreview
           src={selectedImage}
           alt="Selected"
-          style={styles.imagePreview}
         />
       )}
     </div>
