@@ -95,25 +95,23 @@ export const Table = styled.table`
 `;
 
 export const PdfButton = styled.button`
-  border-radius: 12px;
+ height: 6vh;
+  width: 40%;
+  margin: 20px auto;
+
+  background: #0B2940;
   border: 0;
+  border-radius: 8px;
 
-  width: 180px;
-  height: 60px;
-
-  background: #033175;
-
-  margin: 10px auto;
-
-  color: #fff;
   font-family: "Archivo";
   font-weight: 600;
-  font-size: 19px;
+  font-size: 25px;
+  color: #ffffff;
 
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
-    background: #0b2940;
+    background-color: #0b2973;
   }
 `;

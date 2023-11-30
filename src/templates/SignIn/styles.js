@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Main = styled.main`
   min-height: 77.8vh;
@@ -38,32 +38,27 @@ export const Form = styled.form`
   width: 100%;
   padding: 20px;
 
-  margin: 25px 0;
 
   button {
-    background-color: #0B2940;
-    border: 0.0625rem solid #ec8a34;
+  height: 6vh;
+  width: 40%;
+  margin: 20px auto;
 
-    color: #fff;
-    border: none;
+  background: #0B2940;
+  border: 0;
+  border-radius: 8px;
 
-    margin: auto;
-    padding: 0.5rem 0.5rem;
+  font-family: "Archivo";
+  font-weight: 600;
+  font-size: 25px;
+  color: #ffffff;
 
-    height: 2rem;
-    width: 8rem;
+  cursor: pointer;
+  transition: 0.3s;
 
-    font-size: 16px;
-    font-weight: bold;
-
-    border-radius: 11px;
-    cursor: pointer;
-    transition: 0.4s;
-
-    &:hover {
-      background-color: #0b2973;
-      color: #fff;
-    }
+  &:hover {
+    background-color: #0b2973;
+  }
   }
 `;
 

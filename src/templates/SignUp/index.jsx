@@ -1,12 +1,19 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 import { Footer, FormErrorMessage, Header } from "@components";
 import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { schema } from "./utils";
-import { useRouter } from "next/router";
 
 export function SignUp() {
   const router = useRouter();
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    confirmationPassword: "",
+  });
 
   const {
     formState: { errors },
@@ -16,9 +23,40 @@ export function SignUp() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    router.replace("entrar");
+  const onSubmit = async () => {
+    try {
+      const response = await fetch("url_banco", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro ao enviar a requisição: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      console.log("Resposta da API:", result);
+
+      if (result.autenticado) {
+        // Se a autenticação for bem-sucedida, redirecione para a página principal
+        router.replace("/");
+      } else {
+        toast.warning("Usuário ou senha inválidos. Tente novamente!");
+      }
+    } catch (error) {
+      console.error("Erro ao processar a requisição:", error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -36,6 +74,7 @@ export function SignUp() {
               id="username"
               name="username"
               {...register("username")}
+              onChange={handleInputChange}
             />
             {errors?.username?.message && (
               <FormErrorMessage>{errors.username.message}</FormErrorMessage>
@@ -49,6 +88,7 @@ export function SignUp() {
               id="password"
               name="password"
               {...register("password")}
+              onChange={handleInputChange}
             />
             {errors?.password?.message && (
               <FormErrorMessage>{errors.password.message}</FormErrorMessage>
@@ -62,6 +102,7 @@ export function SignUp() {
               id="confirmationPassword"
               name="confirmationPassword"
               {...register("confirmationPassword")}
+              onChange={handleInputChange}
             />
             {errors?.confirmationPassword?.message && (
               <FormErrorMessage>
@@ -82,3 +123,5 @@ export function SignUp() {
     </S.Main>
   );
 }
+
+export default SignUp;

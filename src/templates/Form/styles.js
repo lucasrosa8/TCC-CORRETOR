@@ -46,15 +46,10 @@ export const FirstForm = styled.form`
 `;
 
 export const Legend = styled.legend`
-  ${({ hasMarginTop }) => css`
-    font-weight: 600;
-    font-size: 24px;
-
-    border-bottom: 1px solid #e6e6f0;
-    padding-bottom: 16px;
-
-    margin-top: ${hasMarginTop ? 48 : 0}px;
-  `}
+  font-weight: 600;
+  font-size: 24px;
+  border-bottom: 1px solid #e6e6f0;
+  padding-bottom: 16px;
 `;
 
 export const FormRow = styled.div`

@@ -1,7 +1,5 @@
+import React, { useState } from "react";
 import { Checkbox, Footer, Header } from "@components";
-
-import { useState } from "react";
-
 import * as S from "./styles";
 import { options, questions } from "./utils";
 
@@ -31,39 +29,59 @@ export function Gabarito() {
     });
   };
 
+  const [formData, setFormData] = useState({
+    answers: table,
+    // Adicione outros campos, se necessário
+  });
+
+  const onSubmit = async () => {
+    try {
+      const response = await fetch("url_banco", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro ao enviar a requisição: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      console.log("Resposta da API:", result);
+
+      // Adicione lógica adicional conforme necessário
+
+    } catch (error) {
+      console.error("Erro ao processar a requisição:", error);
+    }
+  };
+
   return (
     <>
       <Header hasNavbar />
 
       <S.Main>
-
-      
-        
         <S.AnswersWrapper>
           <h1>Cadastrar Gabarito</h1>
-          
-          <div class='radio'>
-          <label>
-            <input type="radio"  id="opcao1" name="opcao" value="A1"/>
-            A1
+
+          <div className='radio'>
+            <label>
+              <input type="radio" id="opcao1" name="opcao" value="A1" />
+              A1
             </label>
             <label>
-                <input type="radio" id="opcao2" name="opcao" value="A2"/>
-                A2
+              <input type="radio" id="opcao2" name="opcao" value="A2" />
+              A2
             </label>
             <label>
-                <input type="radio" id="opcao3" name="opcao" value="A3"/>
-                A3
+              <input type="radio" id="opcao3" name="opcao" value="A3" />
+              A3
             </label>
           </div>
 
-
-
-
           <h2>Selecione as alternativas corretas</h2>
-
-
-          
 
           <S.Table>
             <thead>
@@ -82,7 +100,7 @@ export function Gabarito() {
                   <td>Questão {question}</td>
 
                   {options.map((option) => (
-                    <td>
+                    <td key={option}>
                       <Checkbox
                         checked={table.some(
                           (item) =>
@@ -98,8 +116,9 @@ export function Gabarito() {
           </S.Table>
         </S.AnswersWrapper>
 
-
-        <S.PdfButton type="button">Cadastrar Gabarito</S.PdfButton>
+        <S.PdfButton type="button" onClick={onSubmit}>
+          Cadastrar Gabarito
+        </S.PdfButton>
       </S.Main>
 
       <Footer />
