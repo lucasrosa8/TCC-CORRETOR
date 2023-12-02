@@ -4,7 +4,7 @@ import { Gabarito as GabaritoTemplate } from "@templates";
 export default function Gabarito() {
   return (
     <>
-      <SEO title="gabarito"/>
+      <SEO title="Gabarito"/>
 
       <GabaritoTemplate />
     </>

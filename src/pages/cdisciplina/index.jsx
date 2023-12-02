@@ -4,7 +4,7 @@ import { CDisciplina as CDisciplinaTemplate } from "@templates";
 export default function CDisciplina() {
   return (
     <>
-      <SEO title="cdisciplina" />
+      <SEO title="Cdisciplina" />
 
       <CDisciplinaTemplate />
     </>

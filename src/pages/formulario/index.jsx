@@ -4,7 +4,7 @@ import { Form as FormTemplate } from "@templates";
 export default function Form() {
   return (
     <>
-      <SEO title="formulario" />
+      <SEO title="Formulario" />
 
       <FormTemplate />
     </>

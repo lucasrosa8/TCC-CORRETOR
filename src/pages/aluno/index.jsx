@@ -4,7 +4,7 @@ import { Aluno as AlunoTemplate } from "@templates";
 export default function Aluno() {
   return (
     <>
-      <SEO title="aluno" />
+      <SEO title="Aluno" />
 
       <AlunoTemplate />
     </>
