@@ -43,9 +43,12 @@ import Link from 'next/link';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { MdMenu } from "react-icons/md";
 import * as S from './styles';
+import { useRouter } from 'next/router';
 
 
 export function Header({ hasNavbar }) {
+  const router = useRouter() 
+
   const links = [
     {
       text: <MdMenu size={35} />,
@@ -57,7 +60,7 @@ export function Header({ hasNavbar }) {
         },
         {
           text: 'Consultar disciplinas',
-          route: '/disciplina/consultar',
+          route: '/cdisciplina/cdisciplina',
         },
         {
           text: 'Gerar gabarito',
@@ -75,6 +78,7 @@ export function Header({ hasNavbar }) {
           text: 'Corrigir prova',
           route: '/prova/prova',
         },
+        
       ],
     },
 
@@ -82,7 +86,7 @@ export function Header({ hasNavbar }) {
 
   return (
     <S.Header>
-      <h1>CORRETOR DE GABARITO</h1>
+      <h1 onClick={()=> router.push("/")}>CORRETOR DE GABARITO</h1>
 
       {hasNavbar && (
         <S.Navbar>

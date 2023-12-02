@@ -7,3 +7,6 @@ export { Form } from "./Form";
 export { Gabarito } from "./Gabarito";
 export { Disciplina } from "./Disciplina";
 export { Prova } from "./Prova";
+export { Aluno } from "./Aluno";
+export { CDisciplina } from "./CDisciplina";
+

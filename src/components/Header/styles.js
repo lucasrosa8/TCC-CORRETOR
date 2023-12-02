@@ -11,6 +11,7 @@ export const Header = styled.header`
     font-size: 42px;
     text-align: center;
     padding-top:25px;
+    cursor: pointer;
   }
 
 `;
