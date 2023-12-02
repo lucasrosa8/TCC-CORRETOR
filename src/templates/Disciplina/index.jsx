@@ -99,15 +99,7 @@ export function Disciplina() {
               />
             </S.FormRow>
 
-            <S.FormRow>
-              <label htmlFor="periodo">Período</label>
-              <input
-                type="text"
-                id="periodo"
-                onChange={handleInputChange}
-                value={formData.periodo}
-              />
-            </S.FormRow>
+           
           </div>
         </S.FirstForm>
 

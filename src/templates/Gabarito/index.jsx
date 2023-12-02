@@ -43,6 +43,7 @@ export function Gabarito() {
         },
         body: JSON.stringify(formData),
       });
+      console.log(formData);
 
       if (!response.ok) {
         throw new Error(`Erro ao enviar a requisição: ${response.statusText}`);

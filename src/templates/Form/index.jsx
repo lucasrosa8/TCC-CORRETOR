@@ -118,24 +118,16 @@ export function Form() {
             </S.FormRow>
 
             <S.FormRow>
-              <label htmlFor="disciplina">Disciplina</label>
+              <label htmlFor="Turma">Turma</label>
               <input
                 type="text"
-                id="disciplina"
+                id="Turma"
                 value={formData.disciplina}
                 onChange={handleChange}
               />
             </S.FormRow>
 
-            <S.FormRow>
-              <label htmlFor="avaliacao">Avaliação</label>
-              <input
-                type="text"
-                id="avaliacao"
-                value={formData.avaliacao}
-                onChange={handleChange}
-              />
-            </S.FormRow>
+            
           </div>
         </S.FirstForm>
 
