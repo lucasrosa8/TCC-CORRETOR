@@ -36,7 +36,7 @@ export function SignIn() {
       console.log("Resposta da API:", result);
 
       if (result.autenticado) {
-        // Se a autenticação for bem-sucedida, redirecione para a página principal
+        // Se a autenticação for bem-sucedida, redirecionar para a página principal
         router.replace("/");
       } else {
         toast.warning("Usuário ou senha inválidos. Tente novamente!");

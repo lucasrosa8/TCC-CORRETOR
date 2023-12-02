@@ -41,8 +41,8 @@ export function SignUp() {
       console.log("Resposta da API:", result);
 
       if (result.autenticado) {
-        // Se a autenticação for bem-sucedida, redirecione para a página principal
-        router.replace("/");
+        // Se a autenticação for bem-sucedida, redirecioar para a página de login
+        router.replace("../SignIn/index.jsx");
       } else {
         toast.warning("Usuário ou senha inválidos. Tente novamente!");
       }

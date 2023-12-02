@@ -31,7 +31,7 @@ export function Gabarito() {
 
   const [formData, setFormData] = useState({
     answers: table,
-    // Adicione outros campos, se necessário
+   
   });
 
   const onSubmit = async () => {
@@ -51,8 +51,7 @@ export function Gabarito() {
       const result = await response.json();
       console.log("Resposta da API:", result);
 
-      // Adicione lógica adicional conforme necessário
-
+      
     } catch (error) {
       console.error("Erro ao processar a requisição:", error);
     }

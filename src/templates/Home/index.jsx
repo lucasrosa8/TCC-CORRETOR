@@ -24,13 +24,13 @@ export function Home() {
   <div className="ad">
     <h3>Anuncie Aqui!</h3>
     <p>Entre em contato para promover sua marca para milhares de usuários.</p>
-    {/* Pode adicionar uma imagem aqui */}
+    {/* Podemos adicionar uma imagem aqui */}
   </div>
 
   <div className="ad">
     <h3>Especial de Volta às Aulas</h3>
     <p>Descontos exclusivos para professores na primeira correção!</p>
-    {/* Pode adicionar uma imagem aqui */}
+    {/* podemos adicionar uma imagem aqui */}
   </div>
 </section>
 
@@ -41,7 +41,7 @@ export function Home() {
             O professor seleciona as questões do gabarito e a aplicação compara
             as respostas dos alunos com base nesse gabarito.
           </p>
-          {/* Adicione imagens ou gráficos explicativos, se necessário */}
+          {/* Adicionar imagens ou gráficos explicativos*/}
         </section>
 
         {/* Seção para destacar recursos */}
@@ -50,7 +50,7 @@ export function Home() {
           <ul>
             <li>Correção rápida e eficiente</li>
             <li>Análise detalhada de respostas</li>
-            {/* Adicione mais recursos conforme necessário */}
+            
           </ul>
         </section>
 

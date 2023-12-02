@@ -13,7 +13,7 @@ const ImageUpload = ({ onImageSelect }) => {
       setSelectedImage(file);
       onImageSelect(file); // Passa a imagem selecionada para a função do componente pai
     } else {
-      // Adicione aqui a lógica para lidar com tipos de arquivo não permitidos
+      // quando o arquivo nao é o permitido, ele indica quais arquivos são aceitos!
       console.error('Por favor, selecione uma imagem PNG ou JPEG.');
     }
   };
@@ -55,13 +55,11 @@ export function Prova() {
     setSelectedImage(image);
   };
 
-  const onClickCheckbox = (question, option) => {
-    // ... (código existente para manipulação da tabela)
-  };
+ 
 
   const handleSubmit = async () => {
     try {
-      // Adicione lógica para enviar a imagem selecionada junto com a tabela
+      
       const formData = new FormData();
       formData.append('image', selectedImage);
       formData.append('table', JSON.stringify(table));

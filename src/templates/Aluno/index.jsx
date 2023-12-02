@@ -20,13 +20,13 @@ export function Aluno() {
 
         const data = await response.json();
 
-        // Realizar a comparação de imagens (substitua pela lógica real)
+        // Realizar a comparação de imagens
         const nota = realizarComparacaoDeImagens(data.imagem);
 
         // Atualizar estado com a imagem e a nota
         setAlunoData({ nota, imagem: data.imagem });
 
-        // Salvar os dados no armazenamento local ou em algum banco de dados, se necessário
+        // Salvar os dados no armazenamento local ou em algum banco de dados
         salvarDadosNoArmazenamentoLocal({ nota, imagem: data.imagem });
       } catch (error) {
         console.error("Erro na solicitação da API:", error);
@@ -37,14 +37,13 @@ export function Aluno() {
   }, []);
 
   const realizarComparacaoDeImagens = (imagem) => {
-    // Lógica de comparação de imagens aqui (substitua pela lógica real)
+    // Lógica de comparação de imagens aqui 
     // Retorne a nota calculada com base na comparação de imagens
-    return 90; // Exemplo: nota 90 (substitua pela sua lógica real)
+    return 90; // Exemplo: nota 90 
   };
 
   const salvarDadosNoArmazenamentoLocal = (dados) => {
     // Lógica para salvar os dados no armazenamento local ou em um banco de dados
-    // Exemplo com armazenamento local:
     localStorage.setItem("dadosAluno", JSON.stringify(dados));
   };
 
