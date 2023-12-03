@@ -115,7 +115,7 @@ export function SignUp() {
         </S.Form>
 
         <p>
-          Já possui conta? <a href="/entrar">Entrar</a>
+          Já possui conta? <a href="/">Faça Login</a>
         </p>
       </S.Content>
 

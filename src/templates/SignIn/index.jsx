@@ -1,4 +1,4 @@
-import { FormErrorMessage, Header } from "@components";
+import {FormErrorMessage, Header } from "@components";
 import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -17,35 +17,15 @@ export function SignIn() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async ({ username, password }) => {
-    try {
-      // Substitua "sua_url_aqui" pela URL real da sua API
-      const response = await fetch("url_banco", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      console.log(formData);
-      if (!response.ok) {
-        throw new Error(`Erro ao enviar a requisição: ${response.statusText}`);
-      }
-
-      const result = await response.json();
-      console.log("Resposta da API:", result);
-
-      if (result.autenticado) {
-        // Se a autenticação for bem-sucedida, redirecionar para a página principal
-        router.replace("/");
-      } else {
-        toast.warning("Usuário ou senha inválidos. Tente novamente!");
-      }
-    } catch (error) {
-      console.error("Erro ao processar a requisição:", error);
+  const onSubmit = ({ username, password }) => {
+    if (username === "usuario" && password === "senha") {
+      router.replace("../entrar");
+      return;
     }
+
+    toast.warning("Usuário ou senha inválidos. Tente novamente!");
   };
-  
+
   return (
     <S.Main>
       <Header />
@@ -87,6 +67,8 @@ export function SignIn() {
           Não possui conta? <a href="/criar-conta">Faça o cadastro</a>
         </p>
       </S.Content>
+
+
     </S.Main>
   );
 }
