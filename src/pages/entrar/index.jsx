@@ -1,12 +1,13 @@
 import { SEO } from "@components";
-import { SignIn as SignInTemplate } from "@templates";
+import { Home as HomeTemplate } from "@templates";
 
-export default function SignIn() {
+export default function Home() {
   return (
     <>
-      <SEO title="Entrar" />
+      <SEO title="Corretor Gabarito" />
 
-      <SignInTemplate />
+      <HomeTemplate />
     </>
   );
 }
+
