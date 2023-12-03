@@ -1,7 +1,5 @@
 import { Footer, Header } from "@components";
-
 import * as S from "./styles";
-
 import React, { useState, useEffect } from "react";
 
 export function CDisciplina() {
@@ -20,7 +18,7 @@ export function CDisciplina() {
 
         const data = await response.json();
 
-        // Realizar a comparação de imagens 
+        // Realizar a comparação de imagens
         const nota = realizarComparacaoDeImagens(data.imagem);
 
         // Atualizar estado com a imagem e a nota
@@ -47,23 +45,48 @@ export function CDisciplina() {
     localStorage.setItem("dadosAluno", JSON.stringify(dados));
   };
 
+  const handleCadastrarDisciplina = async () => {
+    try {
+      const response = await fetch("sua/api/cadastrarDisciplina", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          disciplina: {
+            nome: "Nome da Disciplina",
+            codigo: "Código da Disciplina",
+            // ... outros dados da disciplina
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao cadastrar disciplina");
+      }
+
+      // Lógica para lidar com o sucesso do cadastro
+      console.log("Disciplina cadastrada com sucesso!");
+
+    } catch (error) {
+      console.error("Erro ao cadastrar disciplina:", error);
+    }
+  };
+
   return (
     <>
-    
       <Header hasNavbar />
-
       <S.Main>
-      <S.FirstForm>
-        {alunoData.imagem && (
-          <div>
-            <img src={alunoData.imagem} alt="Imagem do Aluno" />
-            {alunoData.nota !== null && <p>Nota: {alunoData.nota}</p>}
-          </div>
-        )}
+        <S.FirstForm>
+          {alunoData.imagem && (
+            <div>
+              <img src={alunoData.imagem} alt="Imagem do Aluno" />
+              {alunoData.nota !== null && <p>Nota: {alunoData.nota}</p>}
+            </div>
+          )}
+          <button onClick={handleCadastrarDisciplina}>Cadastrar Disciplina</button>
         </S.FirstForm>
       </S.Main>
-      
-
       <Footer />
     </>
   );

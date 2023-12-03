@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Checkbox, Footer, Header } from "@components";
 import * as S from "./styles";
 import { options, questions } from "./utils";
 
 export function Gabarito() {
   const [table, setTable] = useState([]);
+  const [selectedGabarito, setSelectedGabarito] = useState(null);
 
   const onClickCheckbox = (question, option) => {
     setTable((prev) => {
       const tableData = [...prev];
-
       const foundIndex = tableData.findIndex(
         (item) => item.question === question
       );
 
       if (foundIndex !== -1) {
         tableData[foundIndex].option = option;
-
         return tableData;
       }
 
@@ -29,10 +28,21 @@ export function Gabarito() {
     });
   };
 
+  const onSelectGabarito = (gabarito) => {
+    setSelectedGabarito(gabarito);
+  };
+
   const [formData, setFormData] = useState({
     answers: table,
-   
+    selectedGabarito,
   });
+
+  useEffect(() => {
+    setFormData({
+      answers: table,
+      selectedGabarito,
+    });
+  }, [table, selectedGabarito]);
 
   const onSubmit = async () => {
     try {
@@ -43,6 +53,7 @@ export function Gabarito() {
         },
         body: JSON.stringify(formData),
       });
+
       console.log(formData);
 
       if (!response.ok) {
@@ -51,8 +62,6 @@ export function Gabarito() {
 
       const result = await response.json();
       console.log("Resposta da API:", result);
-
-      
     } catch (error) {
       console.error("Erro ao processar a requisição:", error);
     }
@@ -68,15 +77,33 @@ export function Gabarito() {
 
           <div className='radio'>
             <label>
-              <input type="radio" id="opcao1" name="opcao" value="A1" />
+              <input
+                type="radio"
+                name="gabarito"
+                value="A1"
+                checked={selectedGabarito === "A1"}
+                onChange={() => onSelectGabarito("A1")}
+              />
               A1
             </label>
             <label>
-              <input type="radio" id="opcao2" name="opcao" value="A2" />
+              <input
+                type="radio"
+                name="gabarito"
+                value="A2"
+                checked={selectedGabarito === "A2"}
+                onChange={() => onSelectGabarito("A2")}
+              />
               A2
             </label>
             <label>
-              <input type="radio" id="opcao3" name="opcao" value="A3" />
+              <input
+                type="radio"
+                name="gabarito"
+                value="A3"
+                checked={selectedGabarito === "A3"}
+                onChange={() => onSelectGabarito("A3")}
+              />
               A3
             </label>
           </div>
@@ -87,7 +114,6 @@ export function Gabarito() {
             <thead>
               <tr>
                 <th />
-
                 {options.map((item) => (
                   <th key={item}>{item}</th>
                 ))}
@@ -96,9 +122,8 @@ export function Gabarito() {
 
             <tbody>
               {questions.map((question) => (
-                <tr key={Math.random()}>
+                <tr key={question}>
                   <td>Questão {question}</td>
-
                   {options.map((option) => (
                     <td key={option}>
                       <Checkbox

@@ -9,4 +9,6 @@ export { Disciplina } from "./Disciplina";
 export { Prova } from "./Prova";
 export { Aluno } from "./Aluno";
 export { CDisciplina } from "./CDisciplina";
+export { Turma } from "./Turma"; 
+export { Cturma } from "./Cturma"; 
 
