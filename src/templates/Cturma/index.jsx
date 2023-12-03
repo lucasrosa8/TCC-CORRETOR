@@ -14,25 +14,12 @@ export function Cturma() {
     setTurmaData(event.target.value);
   };
 
-  const handleCadastrarTurma = (event) => {
-    event.preventDefault(); // Impede o comportamento padrão do formulário
+  const handleCadastrarTurma = () => {
+    // Simulando uma requisição para a API (substitua pelo seu código real)
+    console.log("Enviando dados da turma para a API:", turmaData);
 
-    // Enviar requisição para a API com os dados da turma
-    fetch("sua_url_da_api/aqui", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ turmaData }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Lógica de tratamento da resposta da API, se necessário
-        console.log("Resposta da API:", data);
-      })
-      .catch((error) => {
-        console.error("Erro ao enviar requisição:", error);
-      });
+    // Limpar o campo após o cadastro
+    setTurmaData("");
   };
 
   return (
@@ -48,13 +35,14 @@ export function Cturma() {
             </div>
           )}
 
-          <form>
-            <input type="text" value={turmaData} onChange={handleInputChange} />
+          <div>
+            <label>
+              Nome da Turma:
+              <input type="text" value={turmaData} onChange={handleInputChange} />
+            </label>
 
-            <button type="button" onClick={handleCadastrarTurma}>
-              Cadastrar Turma
-            </button>
-          </form>
+            <button className="button"  onClick={handleCadastrarTurma}>Cadastrar</button>
+          </div>
         </S.FirstForm>
       </S.Main>
 

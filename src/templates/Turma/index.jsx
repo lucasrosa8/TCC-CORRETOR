@@ -9,7 +9,7 @@ export function Turma() {
     imagem: null,
   });
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+ 
   const [disciplina, setDisciplina] = useState("");
 
   
