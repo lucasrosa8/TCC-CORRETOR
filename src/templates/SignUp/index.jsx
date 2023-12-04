@@ -5,43 +5,44 @@ import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { schema } from "./utils";
+import { toast } from "react-toastify";
 
 export function SignUp() {
   const router = useRouter();
-
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    matricula: "",
-    password: "",
-    confirmationPassword: "",
-  });
 
   const {
     formState: { errors },
     register,
     handleSubmit,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleRedirect = () => {
-    // Redirecionar para a página raiz do projeto
+  const onSubmit = async (formData) => {
+    if (!formData.nome) {
+      toast.warning("campo nome é obrigatório");
+      return;
+    }
+    if (!formData.email) {
+      toast.warning("campo email é obrigatório");
+      return;
+    }
+    if (!formData.matricula) {
+      toast.warning("campo matricula é obrigatório");
+      return;
+    }
+    if (!formData.password) {
+      toast.warning("campo senha é obrigatório");
+      return;
+    }
+    if (!formData.confirmationPassword) {
+      toast.warning("campo confirmar senha  é obrigatório");
+      return;
+    }
+    if (formData.confirmationPassword !== formData.password) {
+      toast.warning("senha e confirmação de senha devem ser iguais");
+      return;
+    }
     router.push("/");
-
-    // Ou, se você quiser substituir a rota, use router.replace("/") em vez de router.push("/")
-  };
-
-  const onSubmit = async () => {
-    // Lógica de envio do formulário (se necessário)
+    toast.success("usuário cadastrado com sucesso");
   };
 
   return (
@@ -54,13 +55,7 @@ export function SignUp() {
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.FormRow>
             <label htmlFor="nome">Nome:</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              {...register("nome")}
-              onChange={handleInputChange}
-            />
+            <input type="text" id="nome" name="nome" {...register("nome")} />
             {errors?.nome?.message && (
               <FormErrorMessage>{errors.nome.message}</FormErrorMessage>
             )}
@@ -68,13 +63,7 @@ export function SignUp() {
 
           <S.FormRow>
             <label htmlFor="email">E-mail:</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              {...register("email")}
-              onChange={handleInputChange}
-            />
+            <input type="text" id="email" name="email" {...register("email")} />
             {errors?.email?.message && (
               <FormErrorMessage>{errors.email.message}</FormErrorMessage>
             )}
@@ -87,7 +76,6 @@ export function SignUp() {
               id="matricula"
               name="matricula"
               {...register("matricula")}
-              onChange={handleInputChange}
             />
             {errors?.matricula?.message && (
               <FormErrorMessage>{errors.matricula.message}</FormErrorMessage>
@@ -101,7 +89,6 @@ export function SignUp() {
               id="password"
               name="password"
               {...register("password")}
-              onChange={handleInputChange}
             />
             {errors?.password?.message && (
               <FormErrorMessage>{errors.password.message}</FormErrorMessage>
@@ -115,7 +102,6 @@ export function SignUp() {
               id="confirmationPassword"
               name="confirmationPassword"
               {...register("confirmationPassword")}
-              onChange={handleInputChange}
             />
             {errors?.confirmationPassword?.message && (
               <FormErrorMessage>
@@ -127,9 +113,7 @@ export function SignUp() {
           {/* (Adicione os outros campos do formulário aqui) */}
 
           <a href="/">
-            <button type="button" onClick={handleRedirect}>
-              Cadastrar
-            </button>
+            <button type="submit">Cadastrar</button>
           </a>
         </S.Form>
 

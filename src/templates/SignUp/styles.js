@@ -14,11 +14,11 @@ export const Content = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Adicionado para centralizar no eixo vertical */
-  height: 100vh; /* Adicionado para ocupar toda a altura da tela */
+  height: 100%; /* Adicionado para ocupar toda a altura da tela */
 
   width: 100%;
   max-width: 450px;
-  margin: 0 auto; /* Alterado para centralizar horizontalmente */
+  margin: 50px auto; /* Alterado para centralizar horizontalmente */
   padding: 2rem;
 
   background-color: #fff;
@@ -40,6 +40,8 @@ export const Form = styled.form`
     height: 6vh;
     width: 65%;
     margin: 20px auto;
+    display: flex;
+    justify-content: center;
     background: #0b2940;
     border: 0;
     border-radius: 8px;
