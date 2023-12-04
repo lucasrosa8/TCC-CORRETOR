@@ -63,6 +63,7 @@ export function Prova() {
       const formData = new FormData();
       formData.append('image', selectedImage);
       formData.append('table', JSON.stringify(table));
+      console.log(selectedImage.type)
 
       const response = await fetch("url_banco", {
         method: "POST",

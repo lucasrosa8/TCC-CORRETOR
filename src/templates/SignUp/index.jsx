@@ -10,7 +10,9 @@ import { schema } from "./utils";
 export function SignUp() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    username: "",
+    nome: "",
+    email: "",
+    matricula: "",
     password: "",
     confirmationPassword: "",
   });
@@ -41,7 +43,7 @@ export function SignUp() {
       console.log("Resposta da API:", result);
 
       if (result.autenticado) {
-        // Se a autenticação for bem-sucedida, redirecioar para a página de login
+        // Se a autenticação for bem-sucedida, redirecionar para a página de login
         router.replace("../SignIn/index.jsx");
       } else {
         toast.warning("Usuário ou senha inválidos. Tente novamente!");
@@ -68,16 +70,44 @@ export function SignUp() {
 
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.FormRow>
-            <label htmlFor="username">Usuário:</label>
+            <label htmlFor="nome">Nome:</label>
             <input
               type="text"
-              id="username"
-              name="username"
-              {...register("username")}
+              id="nome"
+              name="nome"
+              {...register("nome")}
               onChange={handleInputChange}
             />
-            {errors?.username?.message && (
-              <FormErrorMessage>{errors.username.message}</FormErrorMessage>
+            {errors?.nome?.message && (
+              <FormErrorMessage>{errors.nome.message}</FormErrorMessage>
+            )}
+          </S.FormRow>
+
+          <S.FormRow>
+            <label htmlFor="email">E-mail:</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              {...register("email")}
+              onChange={handleInputChange}
+            />
+            {errors?.email?.message && (
+              <FormErrorMessage>{errors.email.message}</FormErrorMessage>
+            )}
+          </S.FormRow>
+
+          <S.FormRow>
+            <label htmlFor="matricula">Matrícula:</label>
+            <input
+              type="text"
+              id="matricula"
+              name="matricula"
+              {...register("matricula")}
+              onChange={handleInputChange}
+            />
+            {errors?.matricula?.message && (
+              <FormErrorMessage>{errors.matricula.message}</FormErrorMessage>
             )}
           </S.FormRow>
 
