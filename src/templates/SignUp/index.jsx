@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
 import { Footer, FormErrorMessage, Header } from "@components";
 import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,6 +8,7 @@ import { schema } from "./utils";
 
 export function SignUp() {
   const router = useRouter();
+
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -25,40 +25,23 @@ export function SignUp() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async () => {
-    try {
-      const response = await fetch("url_banco", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Erro ao enviar a requisição: ${response.statusText}`);
-      }
-
-      const result = await response.json();
-      console.log("Resposta da API:", result);
-
-      if (result.autenticado) {
-        // Se a autenticação for bem-sucedida, redirecionar para a página de login
-        router.replace("../SignIn/index.jsx");
-      } else {
-        toast.warning("Usuário ou senha inválidos. Tente novamente!");
-      }
-    } catch (error) {
-      console.error("Erro ao processar a requisição:", error);
-    }
-  };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handleRedirect = () => {
+    // Redirecionar para a página raiz do projeto
+    router.push("/");
+
+    // Ou, se você quiser substituir a rota, use router.replace("/") em vez de router.push("/")
+  };
+
+  const onSubmit = async () => {
+    // Lógica de envio do formulário (se necessário)
   };
 
   return (
@@ -141,7 +124,13 @@ export function SignUp() {
             )}
           </S.FormRow>
 
-          <button type="submit">Cadastrar</button>
+          {/* (Adicione os outros campos do formulário aqui) */}
+
+          <a href="/">
+            <button type="button" onClick={handleRedirect}>
+              Cadastrar
+            </button>
+          </a>
         </S.Form>
 
         <p>
